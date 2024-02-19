@@ -7,55 +7,56 @@ const generateMarkdown = require("./utils/generateMarkdown");
 const questions = [
     {
         type: "input",
-        name: "Title",
+        name: "title",
         message: "What do you want the title of your project to be?"
     },
     {
         type: "input",
-        name: "Description",
+        name: "description",
         message: "What is the description of your project?"
     },
     {
         type: "input",
-        name: "Installation",
+        name: "installation",
         message: "What needs to be installed to run this programme?"
     },
     {
         type: "input",
-        name: "Usage",
+        name: "usage",
         message: "How do you plan for this programme to be used?"
     },
     {
         type: "list",
-        name: "License",       
+        name: "license",
         message: "Which license would you like to use?",
-        choices: ["MIT License","GNU","BSD-2-Clause","Boost Software"],
+        choices: ["MIT License", "GNU", "BSD-2-Clause", "Boost Software"],
     },
     {
         type: "input",
-        name: "Git",
+        name: "git",
         message: "What is your Git username?"
     },
     {
         type: "input",
-        name: "Contributions",
-        message: "Are you open to contributions, Yes or No? If yes, please state what contribitons you would like to be made."
+        name: "contributions",
+        message: "Are you open to contributions, Yes or No? If yes, please state what contributions you would like to be made."
+    },
+    {
+        type: "input",
+        name: "questions",
+        message: "What is your email address? This will be used for people to contact you with any questions about your project/contributions."
     },
 ];
 
-// function to write README file
-function writeToFile(fileName, data) {
-}
 
 // function to initialize program
 function init() {
     inquirer.prompt(questions).then(
-        
+
         (answers) => {
-        console.log(answers);
-        generateMarkdown(answers);
-        const exampleFile = `<div>${answers.Title}</div> <div>${answers.Description}</div> <div>${answers.Installation}</div> <div>${answers.Usage}</div> <div>${answers.License}</div> <a href = "https://github.com/${answers.Git}"><div>GitHub</div></a>`;
-        fs.writeFile("log.html",exampleFile, (err) => err ? console.log(err) : console.log("Success!"));
+            console.log(answers);            
+            const exampleFile = generateMarkdown(answers);
+            fs.writeFile("README2.md", exampleFile, (err) => err ? console.log(err) : console.log("Success!"));
         }
     );
 }
