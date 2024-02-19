@@ -1,7 +1,7 @@
 // function to generate markdown for README
 
 const licenseBadges = {
-  "MIT License": "MIT", 
+  "MIT": "MIT", 
   "GNU": "GNU", 
   "BSD-2-Clause": "BSD_2", 
   "Boost Software": "Boost_Software"
@@ -17,7 +17,7 @@ return `# ${data.title}
 ## Usage
   ${data.usage}
 ## License
-  ${data.license}
+  This project is licensed under the ${data.license} license.
 ## Git Hub
   Git Hub (https://github.com/${data.git});
 ## Questions

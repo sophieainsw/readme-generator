@@ -29,7 +29,7 @@ const questions = [
         type: "list",
         name: "license",
         message: "Which license would you like to use?",
-        choices: ["MIT License", "GNU", "BSD-2-Clause", "Boost Software"],
+        choices: ["MIT", "GNU", "BSD-2-Clause", "Boost Software"],
     },
     {
         type: "input",
@@ -53,8 +53,7 @@ const questions = [
 function init() {
     inquirer.prompt(questions).then(
 
-        (answers) => {
-            console.log(answers);            
+        (answers) => {        
             const exampleFile = generateMarkdown(answers);
             fs.writeFile("README2.md", exampleFile, (err) => err ? console.log(err) : console.log("Success!"));
         }
